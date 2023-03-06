@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test form</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+  </head>
+  <nav>
+    <div class="icon" style="display: flex; align-items: center;">
+        <h2 class="logo">Clarity</h2>
+        <img src="/images/logo2.png"
+            width="100"
+            height="100"
+            style="margin-left: 10px;">
+    </div>
+    <div class="heading">
+    </div>
+    <ul class="'nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/survey.html">Survey</a></li>
+        <li><a href="/resources.html">Resources</a></li>
+        <li><a href="/quote.html">Quotes</a></li>
+        <li><a href="/about.html">About</a></li>
+    </ul>
+</nav>
+  <body>
+	
+    <form action="http://localhost:8080/submit" method="POST">
+      Type:
+      <input type="text" name="type" />
+      Participants (enter a number):
+      <input type="text" name="participants" />
+
+      Price (in decimals):
+      <input type="double" name="price" />
+
+      Accessibility:
+      <input type="text" name="accessibility" />
+      <input type="submit" value="Submit!" />
+    </form>
+  </body>
+</html>

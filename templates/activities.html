@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Survey Form</title>
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<nav>
+    <div class="icon" style="display: flex; align-items: center;">
+        <h2 class="logo">Clarity</h2>
+        <img src="/images/logo2.png"
+            width="100"
+            height="100"
+            style="margin-left: 10px;">
+    </div>
+    <div class="'heading">
+    </div>
+    <ul class="'nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/survey.html">Survey</a></li>
+        <li><a href="/resources.html">Resources</a></li>
+        <li><a href="/quote.html">Quotes</a></li>
+        <li><a href="/about.html">About</a></li>
+    </ul>
+</nav>
+<div class="background">
+  <div class="wrapper">
+    <div class="content">
+    <body style="background-image: url(/images/avatar.png); 
+      background-size: cover; 
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed;
+      background-color: #f7f7f7;">
+      </div>
+    </div>
+  </div>
+
+{% block body %}
+<h1 style="text-align: center"> Results: </h1>
+  {% if info['activity'] != null %}
+  <div>
+    <ul style="list-style: none;"
+      <h3 class="mt-0 mb-1">Your activity: {{ info['activity'].capitalize() }} </h3> <br>
+      Accessibility (0 = more convenient, 1 = less convenient): {{ info['accessibility'] }} <br>
+      Activity Type: {{ info['type'].capitalize() }} <br>
+      Number of participants: {{ info['participants'] }} <br>
+      Price: ${{ info['price'] }}
+    {% endif %}
+  </div>
+  {% endblock %}
+</html>

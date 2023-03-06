@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <style>
+      body {
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+      }
+      form {
+        max-width: 500px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        border-radius: 5px;
+      }
+      #createHeader {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      .input {
+        margin-bottom: 10px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      input[type="text"], input[type="password"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        box-sizing: border-box;
+      }
+      button {
+        display: block;
+        width: 100%;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      button:hover {
+        background-color: #2E8B57;
+      }
+      .cn {
+        text-decoration: none;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="/createaccount" method="POST">
+      <div id="createHeader">Create Account</div>
+      <div class="input">
+        <label for="createAccountUsername">Username:</label>
+        <input type="text" name="createAccountUsername" id="createAccountUsername" minlength="4" maxlength="10" class="textInput" required>
+      </div>
+      
+      <div class="input">
+        <label for="createAccountPassword">Password:</label>
+        <input type="password" name="createAccountPassword" id="createAccountPassword" minlength="5" maxlength="15" class="textInput" required>
+      </div>
+      
+      <div class="input">
+        <button class="cn"><a href="./Website.html">Sign In</a></button>
+      </div>
+    </form>
+</body>
+</html>
+

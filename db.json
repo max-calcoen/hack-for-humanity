@@ -1,0 +1,40 @@
+{
+    "users": [
+        {
+            "uname": "newuser1",
+            "pass": "$2b$12$CqzBemutCuiMd8q0SWdLWek9CPmdWcNrMTAml9YkCvvOBm7Fo.kiq",
+            "email": "email@email",
+            "settings": {
+                "quote-ping": true
+            },
+            "reminders": []
+        },
+        {
+            "uname": "newuser12",
+            "pass": "$2b$12$cD7Cna7gzam/XexpHdnCRu28choAnH0zJMb1XFtl9zU2hStTsl6Qy",
+            "email": "w@t",
+            "settings": {
+                "quote-ping": true
+            },
+            "reminders": []
+        },
+        {
+            "uname": "user2",
+            "pass": "$2b$12$si8TThbw.c1aGNLd3hDim./cNu4TyA2qIILiy0kwmw.OJ2lMM97Lm",
+            "email": "e@eeeee",
+            "settings": {
+                "quote-ping": true
+            },
+            "reminders": []
+        },
+        {
+            "uname": "hiiii",
+            "pass": "$2b$12$5D4LM/29oI9n2Ij1fzMp6.XaQUeewAwm9XxVRcE6Tb1aBZUjYBh6q",
+            "email": "1@22",
+            "settings": {
+                "quote-ping": true
+            },
+            "reminders": []
+        }
+    ]
+}

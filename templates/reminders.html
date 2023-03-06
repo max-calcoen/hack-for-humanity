@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content=""width=device-width, initial-scale="1.0">
+	<title>Reminders</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+
+	<style>
+		body {
+		  background-color: #f0f0f0;
+		  font-family: Arial, sans-serif;
+		}
+		form {
+		  max-width: 500px;
+		  margin: auto;
+		  padding: 20px;
+		  border: 1px solid #ccc;
+		  background-color: #fff;
+		  border-radius: 5px;
+		}
+		label {
+		  margin-bottom: 2%;
+		  font-weight: bold;
+		}
+		input[type="text"], input[type="password"] {
+		  display: block;
+		  width: 100%;
+		  padding: 10px;
+		  border-radius: 3px;
+		  border: 1px solid #ccc;
+		  font-size: 16px;
+		  box-sizing: border-box;
+		}
+		button {
+		  display: block;
+		  width: 100%;
+		  background-color: #b62a25;
+		  color: #fff;
+		  border: none;
+		  margin-top: 5%;
+		  border-radius: 3px;
+		  padding: 10px;
+		  font-size: 16px;
+		  cursor: pointer;
+		  transition: all 0.3s ease;
+		}
+		button1 {
+		  display: block;
+		  width: 25%;
+		  background-color: #b62a25;
+		  color: #fff;
+		  border: none;
+		  border-radius: 3px;
+		  padding: 10px;
+		  font-size: 16px;
+		  cursor: pointer;
+		  transition: all 0.3s ease;
+		  margin-top: 10%;
+		  margin-left: 37%;
+		  text-align: center;
+		}
+
+		button2{
+		  display: block;
+		  width: 100%;
+		  background-color: #b62a25;
+		  color: #fff;
+		  border: none;
+		  margin-top: 100%;
+		  border-radius: 3px;
+		  padding: 1px;
+		  font-size: 16px;
+		  cursor: pointer;
+		  transition: all 0.3s ease;
+		}
+		button:hover {
+		  background-color: #640d0d;
+		}
+		button1:hover {
+			background-color: #640d0d;
+		}
+		button2:hover {
+			background-color: #640d0d;
+		}
+	  </style>
+</head>
+
+<nav>
+    <div class="icon" style="display: flex; align-items: center;">
+        <h2 class="logo">Clarity</h2>
+        <img src="{{url_for('static', filename='/images/logo2.png')}}"
+            width="100"
+            height="100"
+            style="margin-left: 10px;">
+    </div>
+    <div class="'heading">
+    </div>
+    <ul class="'nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/survey.html">Survey</a></li>
+        <li><a href="/resources.html">Resources</a></li>
+        <li><a href="/quote.html">Quotes</a></li>
+        <li><a href="/about.html">About</a></li>
+    </ul>
+</nav>
+
+<body>
+	<style type="text/css">
+
+	</style>
+
+    <br><br><br><br><br><br><br><br>
+	<form>
+		<p for="reminder">Enter a reminder:</p>
+		<label for="reminder_name">Name:</label>
+		<input type="text" id="reminder" name="reminder_name">
+		<label for="reminder_description">Description:</label>
+		<input type="text" id="reminder" name="reminder_description">
+		<button type="submit" id="add-btn">Add Reminder</button>
+	</form>
+
+	<ul id="reminder-list">
+		<!-- Reminder items will be added dynamically using JavaScript -->
+	</ul>
+
+	<button1 id="clear-btn">Clear All Reminders</button1>
+	
+	<script>
+
+		window.onload = () => {
+
+			fetch("/getReminders", {
+				mode: 'cors', // no-cors, *cors, same-origin
+				cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+				credentials: 'same-origin', // include, *same-origin, omit
+				headers: {
+					'Content-Type': 'application/json'
+					// 'Content-Type': 'application/x-www-form-urlencoded',
+				}
+			}).then(response => response.json())
+				.then(data => {
+					let reminders = data.split(", ")
+					for(let i = 0; i < reminders.length; i++) {
+						// Get the reminder input value
+						let reminder_name = reminders[i].name;
+						let reminder_description = reminders[i].description;
+						// Create a new list item element
+						let li = document.createElement("li");
+						li.innerHTML = "<p>" + reminder_name + "</p>" + "<p>" + reminder_description + "</p>";
+						li.style.color = "#FFFFFF";
+
+						// Add a remove button to the list item
+						let removeBtn = document.createElement("button2");
+						removeBtn.textContent = "Remove";
+						removeBtn.addEventListener("click", function (
+						) {
+							console.log(li.children[0].innerText)
+							// fetch('/removeReminder', {
+							// 	body: li.children[0].innerText, // name of reminder
+							// 	method: "POST"
+							// })
+							li.remove();
+						});
+						li.appendChild(removeBtn);
+
+						// Add the new list item to the reminder list
+						document.getElementById("reminder-list").appendChild(li);
+					}
+				})
+			
+		}
+		// Add event listener to the form submit button
+		document.getElementById("add-btn").addEventListener("click", function(e) {
+			e.preventDefault(); // Prevent page from reloading on form submission
+
+			// Get the reminder input value
+			let reminder_name = document.getElementById("reminder_name").value;
+			let reminder_description = document.getElementById("reminder_description").value;
+
+			// Create a new list item element
+			let li = document.createElement("li");
+			li.innerHTML = "<p>" + reminder_name + "</p>" + "<p>" + reminder_description + "</p>";
+			li.style.color="#FFFFFF";
+
+			// Add a remove button to the list item
+			let removeBtn = document.createElement("button2");
+			removeBtn.textContent = "Remove";
+			removeBtn.addEventListener("click", function() {
+				li.remove();
+			});
+			li.appendChild(removeBtn);
+
+			// Add the new list item to the reminder list
+			document.getElementById("reminder-list").appendChild(li);
+			
+			// Clear the input field
+			document.getElementById("reminder_name").value = "";
+			document.getElementById("reminder_description").value = "";
+		});
+
+		// Add event listener to the clear button
+		document.getElementById("clear-btn").addEventListener("click", function() {
+			document.getElementById("reminder-list").innerHTML = "";
+		});
+	</script>
+
+	<style>
+        .wrapper {
+            display: flex;
+            align-items: center;
+            height: 60vh;
+            
+        }
+	</style>
+    
+	<div class="background">
+		<div class="wrapper">
+			<div class="content">
+			<body style="background-image: url(/images/remindersbackground.jpg); 
+				background-size: cover; 
+				background-repeat: no-repeat;
+				background-position: center center;
+				background-attachment: fixed;
+				background-color: #f7f7f7;">
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+</html>
